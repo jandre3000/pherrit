@@ -1,0 +1,44 @@
+.pherrit {
+    display: flex;
+    font-size: 0.75rem;
+    color: rgb(34, 34, 34);
+    background-color: #f9f5ed;
+    padding: 0.2rem 0.5rem;
+    border-bottom: 1px solid rgba(168, 168, 168, 0.5);
+}
+.pherrit--very-low {
+    background-color: red;
+    color: darkRed;
+}
+
+.pherrit--low {
+    background-color: #ffd5d5;
+    color: #880000;
+}
+
+.pherrit--medium {
+    background-color: #f6fff7;
+    color: #005600;
+}
+.pherrit--high {
+    background-color: #dbfddb;
+    color: #005600;
+}
+
+.pherrit__title {
+    padding-right: 0.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-grow: 2;
+}
+
+.pherrit__score {
+    min-width: 1rem;
+    flex-grow: 0;
+    font-weight: bold;
+}
+
+.pherrit--status-MERGED {
+    text-decoration: line-through;
+}

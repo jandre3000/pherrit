@@ -1,0 +1,16 @@
+{
+	"manifest_version": 2,
+	"name": "Pherrit",
+	"description": "A unholy merging of Phabricator and Gerrit.",
+	"version": "1",
+	"author": "Jan Drewniak",
+	"permissions": ["activeTab"],
+	"content_scripts": [
+		{
+		  "matches": ["https://gerrit.wikimedia.org/*", "https://phabricator.wikimedia.org/*"],
+		  "js": ["index.js"],
+		  "css": ["style.css"],
+		  "run_at": "document_idle"
+		}
+	]
+}
