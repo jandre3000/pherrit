@@ -10,10 +10,11 @@ NOTE: So far, this is more of a proof-of-concept than a respectable piece of sof
 ## TODO
 
 ### Code Quality
-* [ ] Add linter
+* [ x ] Add linter
 * [ ] Write the JSDocs
-* [ ] Introduce Babel & webpack
-* [ ] Put the core business logic into a `lib` directory and leave the `chrome` dir for extension specific stuff
+* [ x ] Introduce Babel & webpack
+    * [ ] Write the webpack config
+* [ x ] Put the core business logic into a `lib` directory and leave the `chrome` dir for extension specific stuff
 * [ ] Add Jest & unit tests
 
 ### Bugs

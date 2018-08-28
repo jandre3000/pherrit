@@ -1,0 +1,42 @@
+{
+  "name": "pherrit",
+  "version": "0.0.1",
+  "description": "A browser extension that adds Gerrit patches to the Wikimedia Phabricator UI",
+  "main": "src/main.js",
+  "scripts": {
+    "compile.dev.js": "webpack --mode='development' --devtool='inline-source-map' src/main.js -o build/chrome/main.js",
+    "compile.dev.css": "postcss --use=postcss-import --use=postcss-custom-properties -o build/chrome/style.css src/styles/*.css",
+    "compile.dev": " npm run compile.dev.js && npm run compile.dev.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j4n-co/pherrit.git"
+  },
+  "keywords": [
+    "Wikimedia",
+    "Phabricator",
+    "Gerrit"
+  ],
+  "author": "Jan Drewniak",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/j4n-co/pherrit/issues"
+  },
+  "homepage": "https://github.com/j4n-co/pherrit#readme",
+  "devDependencies": {
+    "eslint": "^5.4.0",
+    "eslint-config-wikimedia": "^0.7.2",
+    "eslint-plugin-qunit": "^3.3.1",
+    "jsdoc": "^3.5.5",
+    "postcss": "^7.0.2",
+    "postcss-cli": "^6.0.0",
+    "postcss-custom-properties": "^7.0.0",
+    "postcss-import": "^12.0.0",
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0",
+    "wikimedia-ui-base": "^0.12.0"
+  },
+  "dependencies": {
+    "postcss-color-function": "^4.0.1"
+  }
+}

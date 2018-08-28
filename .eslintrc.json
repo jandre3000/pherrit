@@ -1,0 +1,14 @@
+{
+	"extends": "wikimedia",
+	"env": {
+		"es6": true,
+		"browser": true
+	},
+	"rules": {
+		"no-implicit-globals":"off",
+		"no-use-before-define":"off"
+	},
+	"parserOptions": {
+		"sourceType": "module"
+	}
+}
