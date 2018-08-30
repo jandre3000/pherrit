@@ -86,6 +86,62 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js!./src/components/PherritLink.css":
+/*!**********************************************************************************************************************************************************!*\
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader!./node_modules/postcss-loader/src!./src/components/PherritLink.css ***!
+  \**********************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/components/PherritLink.css?./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader!./node_modules/postcss-loader/src");
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/lib/addStyles.js":
+/*!****************************************************!*\
+  !*** ./node_modules/style-loader/lib/addStyles.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("/*\n\tMIT License http://www.opensource.org/licenses/mit-license.php\n\tAuthor Tobias Koppers @sokra\n*/\n\nvar stylesInDom = {};\n\nvar\tmemoize = function (fn) {\n\tvar memo;\n\n\treturn function () {\n\t\tif (typeof memo === \"undefined\") memo = fn.apply(this, arguments);\n\t\treturn memo;\n\t};\n};\n\nvar isOldIE = memoize(function () {\n\t// Test for IE <= 9 as proposed by Browserhacks\n\t// @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805\n\t// Tests for existence of standard globals is to allow style-loader\n\t// to operate correctly into non-standard environments\n\t// @see https://github.com/webpack-contrib/style-loader/issues/177\n\treturn window && document && document.all && !window.atob;\n});\n\nvar getTarget = function (target, parent) {\n  if (parent){\n    return parent.querySelector(target);\n  }\n  return document.querySelector(target);\n};\n\nvar getElement = (function (fn) {\n\tvar memo = {};\n\n\treturn function(target, parent) {\n                // If passing function in options, then use it for resolve \"head\" element.\n                // Useful for Shadow Root style i.e\n                // {\n                //   insertInto: function () { return document.querySelector(\"#foo\").shadowRoot }\n                // }\n                if (typeof target === 'function') {\n                        return target();\n                }\n                if (typeof memo[target] === \"undefined\") {\n\t\t\tvar styleTarget = getTarget.call(this, target, parent);\n\t\t\t// Special case to return head of iframe instead of iframe itself\n\t\t\tif (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {\n\t\t\t\ttry {\n\t\t\t\t\t// This will throw an exception if access to iframe is blocked\n\t\t\t\t\t// due to cross-origin restrictions\n\t\t\t\t\tstyleTarget = styleTarget.contentDocument.head;\n\t\t\t\t} catch(e) {\n\t\t\t\t\tstyleTarget = null;\n\t\t\t\t}\n\t\t\t}\n\t\t\tmemo[target] = styleTarget;\n\t\t}\n\t\treturn memo[target]\n\t};\n})();\n\nvar singleton = null;\nvar\tsingletonCounter = 0;\nvar\tstylesInsertedAtTop = [];\n\nvar\tfixUrls = __webpack_require__(/*! ./urls */ \"./node_modules/style-loader/lib/urls.js\");\n\nmodule.exports = function(list, options) {\n\tif (typeof DEBUG !== \"undefined\" && DEBUG) {\n\t\tif (typeof document !== \"object\") throw new Error(\"The style-loader cannot be used in a non-browser environment\");\n\t}\n\n\toptions = options || {};\n\n\toptions.attrs = typeof options.attrs === \"object\" ? options.attrs : {};\n\n\t// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>\n\t// tags it will allow on a page\n\tif (!options.singleton && typeof options.singleton !== \"boolean\") options.singleton = isOldIE();\n\n\t// By default, add <style> tags to the <head> element\n        if (!options.insertInto) options.insertInto = \"head\";\n\n\t// By default, add <style> tags to the bottom of the target\n\tif (!options.insertAt) options.insertAt = \"bottom\";\n\n\tvar styles = listToStyles(list, options);\n\n\taddStylesToDom(styles, options);\n\n\treturn function update (newList) {\n\t\tvar mayRemove = [];\n\n\t\tfor (var i = 0; i < styles.length; i++) {\n\t\t\tvar item = styles[i];\n\t\t\tvar domStyle = stylesInDom[item.id];\n\n\t\t\tdomStyle.refs--;\n\t\t\tmayRemove.push(domStyle);\n\t\t}\n\n\t\tif(newList) {\n\t\t\tvar newStyles = listToStyles(newList, options);\n\t\t\taddStylesToDom(newStyles, options);\n\t\t}\n\n\t\tfor (var i = 0; i < mayRemove.length; i++) {\n\t\t\tvar domStyle = mayRemove[i];\n\n\t\t\tif(domStyle.refs === 0) {\n\t\t\t\tfor (var j = 0; j < domStyle.parts.length; j++) domStyle.parts[j]();\n\n\t\t\t\tdelete stylesInDom[domStyle.id];\n\t\t\t}\n\t\t}\n\t};\n};\n\nfunction addStylesToDom (styles, options) {\n\tfor (var i = 0; i < styles.length; i++) {\n\t\tvar item = styles[i];\n\t\tvar domStyle = stylesInDom[item.id];\n\n\t\tif(domStyle) {\n\t\t\tdomStyle.refs++;\n\n\t\t\tfor(var j = 0; j < domStyle.parts.length; j++) {\n\t\t\t\tdomStyle.parts[j](item.parts[j]);\n\t\t\t}\n\n\t\t\tfor(; j < item.parts.length; j++) {\n\t\t\t\tdomStyle.parts.push(addStyle(item.parts[j], options));\n\t\t\t}\n\t\t} else {\n\t\t\tvar parts = [];\n\n\t\t\tfor(var j = 0; j < item.parts.length; j++) {\n\t\t\t\tparts.push(addStyle(item.parts[j], options));\n\t\t\t}\n\n\t\t\tstylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};\n\t\t}\n\t}\n}\n\nfunction listToStyles (list, options) {\n\tvar styles = [];\n\tvar newStyles = {};\n\n\tfor (var i = 0; i < list.length; i++) {\n\t\tvar item = list[i];\n\t\tvar id = options.base ? item[0] + options.base : item[0];\n\t\tvar css = item[1];\n\t\tvar media = item[2];\n\t\tvar sourceMap = item[3];\n\t\tvar part = {css: css, media: media, sourceMap: sourceMap};\n\n\t\tif(!newStyles[id]) styles.push(newStyles[id] = {id: id, parts: [part]});\n\t\telse newStyles[id].parts.push(part);\n\t}\n\n\treturn styles;\n}\n\nfunction insertStyleElement (options, style) {\n\tvar target = getElement(options.insertInto)\n\n\tif (!target) {\n\t\tthrow new Error(\"Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.\");\n\t}\n\n\tvar lastStyleElementInsertedAtTop = stylesInsertedAtTop[stylesInsertedAtTop.length - 1];\n\n\tif (options.insertAt === \"top\") {\n\t\tif (!lastStyleElementInsertedAtTop) {\n\t\t\ttarget.insertBefore(style, target.firstChild);\n\t\t} else if (lastStyleElementInsertedAtTop.nextSibling) {\n\t\t\ttarget.insertBefore(style, lastStyleElementInsertedAtTop.nextSibling);\n\t\t} else {\n\t\t\ttarget.appendChild(style);\n\t\t}\n\t\tstylesInsertedAtTop.push(style);\n\t} else if (options.insertAt === \"bottom\") {\n\t\ttarget.appendChild(style);\n\t} else if (typeof options.insertAt === \"object\" && options.insertAt.before) {\n\t\tvar nextSibling = getElement(options.insertAt.before, target);\n\t\ttarget.insertBefore(style, nextSibling);\n\t} else {\n\t\tthrow new Error(\"[Style Loader]\\n\\n Invalid value for parameter 'insertAt' ('options.insertAt') found.\\n Must be 'top', 'bottom', or Object.\\n (https://github.com/webpack-contrib/style-loader#insertat)\\n\");\n\t}\n}\n\nfunction removeStyleElement (style) {\n\tif (style.parentNode === null) return false;\n\tstyle.parentNode.removeChild(style);\n\n\tvar idx = stylesInsertedAtTop.indexOf(style);\n\tif(idx >= 0) {\n\t\tstylesInsertedAtTop.splice(idx, 1);\n\t}\n}\n\nfunction createStyleElement (options) {\n\tvar style = document.createElement(\"style\");\n\n\tif(options.attrs.type === undefined) {\n\t\toptions.attrs.type = \"text/css\";\n\t}\n\n\tif(options.attrs.nonce === undefined) {\n\t\tvar nonce = getNonce();\n\t\tif (nonce) {\n\t\t\toptions.attrs.nonce = nonce;\n\t\t}\n\t}\n\n\taddAttrs(style, options.attrs);\n\tinsertStyleElement(options, style);\n\n\treturn style;\n}\n\nfunction createLinkElement (options) {\n\tvar link = document.createElement(\"link\");\n\n\tif(options.attrs.type === undefined) {\n\t\toptions.attrs.type = \"text/css\";\n\t}\n\toptions.attrs.rel = \"stylesheet\";\n\n\taddAttrs(link, options.attrs);\n\tinsertStyleElement(options, link);\n\n\treturn link;\n}\n\nfunction addAttrs (el, attrs) {\n\tObject.keys(attrs).forEach(function (key) {\n\t\tel.setAttribute(key, attrs[key]);\n\t});\n}\n\nfunction getNonce() {\n\tif (false) {}\n\n\treturn __webpack_require__.nc;\n}\n\nfunction addStyle (obj, options) {\n\tvar style, update, remove, result;\n\n\t// If a transform function was defined, run it on the css\n\tif (options.transform && obj.css) {\n\t    result = options.transform(obj.css);\n\n\t    if (result) {\n\t    \t// If transform returns a value, use that instead of the original css.\n\t    \t// This allows running runtime transformations on the css.\n\t    \tobj.css = result;\n\t    } else {\n\t    \t// If the transform function returns a falsy value, don't add this css.\n\t    \t// This allows conditional loading of css\n\t    \treturn function() {\n\t    \t\t// noop\n\t    \t};\n\t    }\n\t}\n\n\tif (options.singleton) {\n\t\tvar styleIndex = singletonCounter++;\n\n\t\tstyle = singleton || (singleton = createStyleElement(options));\n\n\t\tupdate = applyToSingletonTag.bind(null, style, styleIndex, false);\n\t\tremove = applyToSingletonTag.bind(null, style, styleIndex, true);\n\n\t} else if (\n\t\tobj.sourceMap &&\n\t\ttypeof URL === \"function\" &&\n\t\ttypeof URL.createObjectURL === \"function\" &&\n\t\ttypeof URL.revokeObjectURL === \"function\" &&\n\t\ttypeof Blob === \"function\" &&\n\t\ttypeof btoa === \"function\"\n\t) {\n\t\tstyle = createLinkElement(options);\n\t\tupdate = updateLink.bind(null, style, options);\n\t\tremove = function () {\n\t\t\tremoveStyleElement(style);\n\n\t\t\tif(style.href) URL.revokeObjectURL(style.href);\n\t\t};\n\t} else {\n\t\tstyle = createStyleElement(options);\n\t\tupdate = applyToTag.bind(null, style);\n\t\tremove = function () {\n\t\t\tremoveStyleElement(style);\n\t\t};\n\t}\n\n\tupdate(obj);\n\n\treturn function updateStyle (newObj) {\n\t\tif (newObj) {\n\t\t\tif (\n\t\t\t\tnewObj.css === obj.css &&\n\t\t\t\tnewObj.media === obj.media &&\n\t\t\t\tnewObj.sourceMap === obj.sourceMap\n\t\t\t) {\n\t\t\t\treturn;\n\t\t\t}\n\n\t\t\tupdate(obj = newObj);\n\t\t} else {\n\t\t\tremove();\n\t\t}\n\t};\n}\n\nvar replaceText = (function () {\n\tvar textStore = [];\n\n\treturn function (index, replacement) {\n\t\ttextStore[index] = replacement;\n\n\t\treturn textStore.filter(Boolean).join('\\n');\n\t};\n})();\n\nfunction applyToSingletonTag (style, index, remove, obj) {\n\tvar css = remove ? \"\" : obj.css;\n\n\tif (style.styleSheet) {\n\t\tstyle.styleSheet.cssText = replaceText(index, css);\n\t} else {\n\t\tvar cssNode = document.createTextNode(css);\n\t\tvar childNodes = style.childNodes;\n\n\t\tif (childNodes[index]) style.removeChild(childNodes[index]);\n\n\t\tif (childNodes.length) {\n\t\t\tstyle.insertBefore(cssNode, childNodes[index]);\n\t\t} else {\n\t\t\tstyle.appendChild(cssNode);\n\t\t}\n\t}\n}\n\nfunction applyToTag (style, obj) {\n\tvar css = obj.css;\n\tvar media = obj.media;\n\n\tif(media) {\n\t\tstyle.setAttribute(\"media\", media)\n\t}\n\n\tif(style.styleSheet) {\n\t\tstyle.styleSheet.cssText = css;\n\t} else {\n\t\twhile(style.firstChild) {\n\t\t\tstyle.removeChild(style.firstChild);\n\t\t}\n\n\t\tstyle.appendChild(document.createTextNode(css));\n\t}\n}\n\nfunction updateLink (link, options, obj) {\n\tvar css = obj.css;\n\tvar sourceMap = obj.sourceMap;\n\n\t/*\n\t\tIf convertToAbsoluteUrls isn't defined, but sourcemaps are enabled\n\t\tand there is no publicPath defined then lets turn convertToAbsoluteUrls\n\t\ton by default.  Otherwise default to the convertToAbsoluteUrls option\n\t\tdirectly\n\t*/\n\tvar autoFixUrls = options.convertToAbsoluteUrls === undefined && sourceMap;\n\n\tif (options.convertToAbsoluteUrls || autoFixUrls) {\n\t\tcss = fixUrls(css);\n\t}\n\n\tif (sourceMap) {\n\t\t// http://stackoverflow.com/a/26603875\n\t\tcss += \"\\n/*# sourceMappingURL=data:application/json;base64,\" + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + \" */\";\n\t}\n\n\tvar blob = new Blob([css], { type: \"text/css\" });\n\n\tvar oldSrc = link.href;\n\n\tlink.href = URL.createObjectURL(blob);\n\n\tif(oldSrc) URL.revokeObjectURL(oldSrc);\n}\n\n\n//# sourceURL=webpack:///./node_modules/style-loader/lib/addStyles.js?");
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/lib/urls.js":
+/*!***********************************************!*\
+  !*** ./node_modules/style-loader/lib/urls.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("\n/**\n * When source maps are enabled, `style-loader` uses a link element with a data-uri to\n * embed the css on the page. This breaks all relative urls because now they are relative to a\n * bundle instead of the current page.\n *\n * One solution is to only use full urls, but that may be impossible.\n *\n * Instead, this function \"fixes\" the relative urls to be absolute according to the current page location.\n *\n * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.\n *\n */\n\nmodule.exports = function (css) {\n  // get current location\n  var location = typeof window !== \"undefined\" && window.location;\n\n  if (!location) {\n    throw new Error(\"fixUrls requires window.location\");\n  }\n\n\t// blank or null?\n\tif (!css || typeof css !== \"string\") {\n\t  return css;\n  }\n\n  var baseUrl = location.protocol + \"//\" + location.host;\n  var currentDir = baseUrl + location.pathname.replace(/\\/[^\\/]*$/, \"/\");\n\n\t// convert each url(...)\n\t/*\n\tThis regular expression is just a way to recursively match brackets within\n\ta string.\n\n\t /url\\s*\\(  = Match on the word \"url\" with any whitespace after it and then a parens\n\t   (  = Start a capturing group\n\t     (?:  = Start a non-capturing group\n\t         [^)(]  = Match anything that isn't a parentheses\n\t         |  = OR\n\t         \\(  = Match a start parentheses\n\t             (?:  = Start another non-capturing groups\n\t                 [^)(]+  = Match anything that isn't a parentheses\n\t                 |  = OR\n\t                 \\(  = Match a start parentheses\n\t                     [^)(]*  = Match anything that isn't a parentheses\n\t                 \\)  = Match a end parentheses\n\t             )  = End Group\n              *\\) = Match anything and then a close parens\n          )  = Close non-capturing group\n          *  = Match anything\n       )  = Close capturing group\n\t \\)  = Match a close parens\n\n\t /gi  = Get all matches, not the first.  Be case insensitive.\n\t */\n\tvar fixedCss = css.replace(/url\\s*\\(((?:[^)(]|\\((?:[^)(]+|\\([^)(]*\\))*\\))*)\\)/gi, function(fullMatch, origUrl) {\n\t\t// strip quotes (if they exist)\n\t\tvar unquotedOrigUrl = origUrl\n\t\t\t.trim()\n\t\t\t.replace(/^\"(.*)\"$/, function(o, $1){ return $1; })\n\t\t\t.replace(/^'(.*)'$/, function(o, $1){ return $1; });\n\n\t\t// already a full url? no change\n\t\tif (/^(#|data:|http:\\/\\/|https:\\/\\/|file:\\/\\/\\/|\\s*$)/i.test(unquotedOrigUrl)) {\n\t\t  return fullMatch;\n\t\t}\n\n\t\t// convert the url to a full url\n\t\tvar newUrl;\n\n\t\tif (unquotedOrigUrl.indexOf(\"//\") === 0) {\n\t\t  \t//TODO: should we add protocol?\n\t\t\tnewUrl = unquotedOrigUrl;\n\t\t} else if (unquotedOrigUrl.indexOf(\"/\") === 0) {\n\t\t\t// path should be relative to the base url\n\t\t\tnewUrl = baseUrl + unquotedOrigUrl; // already starts with '/'\n\t\t} else {\n\t\t\t// path should be relative to current directory\n\t\t\tnewUrl = currentDir + unquotedOrigUrl.replace(/^\\.\\//, \"\"); // Strip leading './'\n\t\t}\n\n\t\t// send back the fixed url(...)\n\t\treturn \"url(\" + JSON.stringify(newUrl) + \")\";\n\t});\n\n\t// send back the fixed css\n\treturn fixedCss;\n};\n\n\n//# sourceURL=webpack:///./node_modules/style-loader/lib/urls.js?");
+
+/***/ }),
+
+/***/ "./src/components/PherritLink.css":
+/*!****************************************!*\
+  !*** ./src/components/PherritLink.css ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("\nvar content = __webpack_require__(/*! !../../node_modules/mini-css-extract-plugin/dist/loader.js!../../node_modules/css-loader!../../node_modules/postcss-loader/src!./PherritLink.css */ \"./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/index.js!./node_modules/postcss-loader/src/index.js!./src/components/PherritLink.css\");\n\nif(typeof content === 'string') content = [[module.i, content, '']];\n\nvar transform;\nvar insertInto;\n\n\n\nvar options = {\"hmr\":true}\n\noptions.transform = transform\noptions.insertInto = undefined;\n\nvar update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyles.js */ \"./node_modules/style-loader/lib/addStyles.js\")(content, options);\n\nif(content.locals) module.exports = content.locals;\n\nif(false) {}\n\n//# sourceURL=webpack:///./src/components/PherritLink.css?");
+
+/***/ }),
+
+/***/ "./src/components/PherritLink.js":
+/*!***************************************!*\
+  !*** ./src/components/PherritLink.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _PherritLink_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PherritLink.css */ \"./src/components/PherritLink.css\");\n/* harmony import */ var _PherritLink_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_PherritLink_css__WEBPACK_IMPORTED_MODULE_0__);\n\n\nclass PherritLink {\n\tconstructor( data ) {\n\t\tthis.string = this.template( data );\n\t}\n\n\ttemplate( data ) {\n\n\t\tconst\turl = data.url,\n\t\t\ttitle = data.title,\n\t\t\tstatus = data.status,\n\t\t\ttotalScore = data.codeReviewScore.reduce( ( s, i ) => {\n\t\t\t\treturn s + i;\n\t\t\t}, 0 ),\n\t\t\taverageScore = Math.round( totalScore / data.codeReviewScore.length ) || 0,\n\t\t\tscoreClasses = {\n\t\t\t\t'-2': 'pherrit--very-low',\n\t\t\t\t'-1': 'pherrit--low',\n\t\t\t\t0: 'pherrit--neutral',\n\t\t\t\t1: 'pherrit--medium',\n\t\t\t\t2: 'pherrit--high'\n\t\t\t},\n\t\t\tscoreClass = scoreClasses[ averageScore ],\n\t\t\tcodeReviewScores = data.codeReviewScore.reduce( ( acc, score ) => {\n\t\t\t\treturn acc.concat(\n\t\t\t\t\t( score > 0 ) ? '+' + score + ', ' : score + ', '\n\t\t\t\t);\n\t\t\t}, '' ).slice( 0, -2 );\n\t\treturn `\n\t\t\t<a target=\"_blank\" href=\"${url}\" class=\"pherrit ${scoreClass} pherrit--status-${status}\">\n\t\t\t\t<span class=\"pherrit__title\">\n\t\t\t\t\t${title}\n\t\t\t\t</span>\n\t\t\t\t<span class=\"pherrit__score\">\n\t\t\t\t\t${codeReviewScores}\n\t\t\t\t</span>\n\t\t\t</a>\n\t\t`;\n\t}\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (PherritLink);\n\n\n//# sourceURL=webpack:///./src/components/PherritLink.js?");
+
+/***/ }),
+
 /***/ "./src/lib/GerritQuery.js":
 /*!********************************!*\
   !*** ./src/lib/GerritQuery.js ***!
@@ -94,59 +150,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/**
- * Class that builds and executes the Gerrit query.
- */
-class GerritQuery {
-	constructor( ticketNumbers ) {
-		this.queryString = this.createQueryString( ticketNumbers );
-		this.queryUrl = this.createUrl( this.queryString );
-	}
-
-	get url() {
-		return this.queryUrl;
-	}
-
-	createQueryString( ticketNumbers ) {
-		var combiner = '+OR+',
-			ticketsLength = ticketNumbers.length,
-			queryElements = ticketNumbers.map( ( num, i ) => {
-				if ( i === ticketsLength - 1 ) {
-					return `${num}`;
-				} else {
-					return `${num}${combiner}`;
-				}
-			} );
-		return queryElements.join( '' );
-	}
-
-	createUrl( query ) {
-		return `https://gerrit.wikimedia.org/r/changes/?pp=0&o=TRACKING_IDS&o=DETAILED_LABELS&q=bug:${query}`;
-	}
-
-	fetch() {
-		return fetch( this.url, {
-			headers: {
-				Accept: 'application/json',
-				'Content-Type': 'application/json'
-			}
-		} )
-			.then( ( response ) => {
-				return response.text();
-			} )
-			.then( ( responseText ) => {
-				responseText = responseText.replace( /^.*\n/, '' );
-				return JSON.parse( responseText );
-			} )
-			.catch( ( err ) => {
-				console.log( err ); // eslint-disable-line
-			} );
-	}
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (GerritQuery);
-
+eval("__webpack_require__.r(__webpack_exports__);\n/**\n * Class that builds and executes the Gerrit query.\n */\nclass GerritQuery {\n\tconstructor( ticketNumbers ) {\n\t\tthis.queryString = this.createQueryString( ticketNumbers );\n\t\tthis.queryUrl = this.createUrl( this.queryString );\n\t}\n\n\tget url() {\n\t\treturn this.queryUrl;\n\t}\n\n\tcreateQueryString( ticketNumbers ) {\n\t\tvar combiner = '+OR+',\n\t\t\tticketsLength = ticketNumbers.length,\n\t\t\tqueryElements = ticketNumbers.map( ( num, i ) => {\n\t\t\t\tif ( i === ticketsLength - 1 ) {\n\t\t\t\t\treturn `${num}`;\n\t\t\t\t} else {\n\t\t\t\t\treturn `${num}${combiner}`;\n\t\t\t\t}\n\t\t\t} );\n\t\treturn queryElements.join( '' );\n\t}\n\n\tcreateUrl( query ) {\n\t\treturn `https://gerrit.wikimedia.org/r/changes/?pp=0&o=TRACKING_IDS&o=DETAILED_LABELS&q=bug:${query}`;\n\t}\n\n\tfetch() {\n\t\treturn fetch( this.url, {\n\t\t\theaders: {\n\t\t\t\tAccept: 'application/json',\n\t\t\t\t'Content-Type': 'application/json'\n\t\t\t}\n\t\t} )\n\t\t\t.then( ( response ) => {\n\t\t\t\treturn response.text();\n\t\t\t} )\n\t\t\t.then( ( responseText ) => {\n\t\t\t\tresponseText = responseText.replace( /^.*\\n/, '' );\n\t\t\t\treturn JSON.parse( responseText );\n\t\t\t} )\n\t\t\t.catch( ( err ) => {\n\t\t\t\tconsole.log( err ); // eslint-disable-line\n\t\t\t} );\n\t}\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (GerritQuery);\n\n\n//# sourceURL=webpack:///./src/lib/GerritQuery.js?");
 
 /***/ }),
 
@@ -158,46 +162,7 @@ class GerritQuery {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/**
- * Class that parses the response from the Phabricator API and returns just the necessary data.
- */
-class GerritResponseParser {
-	formatJSON( response ) {
-		return response.reduce( ( acc, r ) => {
-			var phab = r.tracking_ids.find( ( i ) => i.system === 'Phab' );
-
-			if ( phab ) {
-
-				acc.push( {
-					ticketNumber: phab.id,
-					title: r.subject,
-					url: `https://gerrit.wikimedia.org/r/#/c/${r.project}/+/${r._number}/`, // eslint-disable-line
-					codeReviewScore: this.parseCodeReviewScore( r ) || 0,
-					status: r.status
-				} );
-			}
-			return acc;
-		}, [] );
-	}
-
-	parseCodeReviewScore( r ) {
-		if ( r.labels[ 'Code-Review' ] && r.labels[ 'Code-Review' ].all ) {
-			return r.labels[ 'Code-Review' ].all.reduce( ( c, v ) => {
-				if ( v.value !== 0 ) {
-					c.push( v.value );
-				}
-				return c;
-			}, [] );
-		}
-		return [ 0 ];
-
-	}
-
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (GerritResponseParser);
-
+eval("__webpack_require__.r(__webpack_exports__);\n/**\n * Class that parses the response from the Phabricator API and returns just the necessary data.\n */\nclass GerritResponseParser {\n\tformatJSON( response ) {\n\t\treturn response.reduce( ( acc, r ) => {\n\t\t\tvar phab = r.tracking_ids.find( ( i ) => i.system === 'Phab' );\n\n\t\t\tif ( phab ) {\n\n\t\t\t\tacc.push( {\n\t\t\t\t\tticketNumber: phab.id,\n\t\t\t\t\ttitle: r.subject,\n\t\t\t\t\turl: `https://gerrit.wikimedia.org/r/#/c/${r.project}/+/${r._number}/`, // eslint-disable-line\n\t\t\t\t\tcodeReviewScore: this.parseCodeReviewScore( r ) || 0,\n\t\t\t\t\tstatus: r.status\n\t\t\t\t} );\n\t\t\t}\n\t\t\treturn acc;\n\t\t}, [] );\n\t}\n\n\tparseCodeReviewScore( r ) {\n\t\tif ( r.labels[ 'Code-Review' ] && r.labels[ 'Code-Review' ].all ) {\n\t\t\treturn r.labels[ 'Code-Review' ].all.reduce( ( c, v ) => {\n\t\t\t\tif ( v.value !== 0 ) {\n\t\t\t\t\tc.push( v.value );\n\t\t\t\t}\n\t\t\t\treturn c;\n\t\t\t}, [] );\n\t\t}\n\t\treturn [ 0 ];\n\n\t}\n\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (GerritResponseParser);\n\n\n//# sourceURL=webpack:///./src/lib/GerritResponseParser.js?");
 
 /***/ }),
 
@@ -209,38 +174,7 @@ class GerritResponseParser {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/**
- * Class that abstracts the Phabricator DOM elements
- */
-class Page {
-	get cards() {
-		return document.querySelectorAll( '[data-sigil=" project-card"]' );
-	}
-
-	get ticketNumbers() {
-		const cardArray = Array.from( this.cards );
-		return cardArray.map( ( card ) => {
-			return this.getTicketNumberFromCard( card );
-		} );
-	}
-
-	get cardMap() {
-		const cardArray = Array.from( this.cards );
-		return cardArray.reduce( ( cardObj, card ) => {
-			const num = this.getTicketNumberFromCard( card );
-			cardObj[ num ] = card;
-			return cardObj;
-		}, {} );
-	}
-
-	getTicketNumberFromCard( cardDOM ) {
-		return cardDOM.querySelector( '.phui-oi-objname' ).innerHTML;
-	}
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (Page);
-
+eval("__webpack_require__.r(__webpack_exports__);\n/**\n * Class that abstracts the Phabricator DOM elements\n */\nclass Page {\n\tget cards() {\n\t\treturn document.querySelectorAll( '[data-sigil=\" project-card\"]' );\n\t}\n\n\tget ticketNumbers() {\n\t\tconst cardArray = Array.from( this.cards );\n\t\treturn cardArray.map( ( card ) => {\n\t\t\treturn this.getTicketNumberFromCard( card );\n\t\t} );\n\t}\n\n\tget cardMap() {\n\t\tconst cardArray = Array.from( this.cards );\n\t\treturn cardArray.reduce( ( cardObj, card ) => {\n\t\t\tconst num = this.getTicketNumberFromCard( card );\n\t\t\tcardObj[ num ] = card;\n\t\t\treturn cardObj;\n\t\t}, {} );\n\t}\n\n\tgetTicketNumberFromCard( cardDOM ) {\n\t\treturn cardDOM.querySelector( '.phui-oi-objname' ).innerHTML;\n\t}\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Page);\n\n\n//# sourceURL=webpack:///./src/lib/Page.js?");
 
 /***/ }),
 
@@ -252,53 +186,7 @@ class Page {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/**
- * Class responsible for taking data and rendering it into the DOM
- */
-class Renderer {
-
-	constructor() {
-		this.parser = new DOMParser();
-	}
-
-	createTemplateString( data ) {
-		const totalScore = data.codeReviewScore.reduce( ( s, i ) => {
-				return s + i;
-			}, 0 ),
-			averageScore = Math.round( totalScore / data.codeReviewScore.length ) || 0,
-			scoreClasses = {
-				'-2': 'pherrit--very-low',
-				'-1': 'pherrit--low',
-				0: 'pherrit--neutral',
-				1: 'pherrit--medium',
-				2: 'pherrit--high'
-			};
-		return `
-		<a target="_blank" href="${data.url}" class="pherrit ${scoreClasses[ averageScore ]} pherrit--status-${data.status}">
-			<span class="pherrit__title">
-				${data.title}
-			</span>
-			<span class="pherrit__score">
-				${data.codeReviewScore.join( ',' )}
-			</span>
-		</a>
-		`;
-	}
-
-	createDOMFragment( string ) {
-		var fragment = this.parser.parseFromString( string, 'text/html' );
-		return fragment;
-	}
-	createDOMTemplate( data ) {
-		var domString = this.createTemplateString( data ),
-			domFragment = this.createDOMFragment( domString );
-		return domFragment;
-	}
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (Renderer);
-
+eval("__webpack_require__.r(__webpack_exports__);\n/**\n * Class responsible for taking data and rendering it into the DOM\n */\nclass Renderer {\n\n\tconstructor() {\n\t\tthis.parser = new DOMParser();\n\t}\n\n\tcreateDOMFragment( string ) {\n\t\tvar fragment = this.parser.parseFromString( string, 'text/html' );\n\t\treturn fragment;\n\t}\n\n\tappendTemplateToDOM( template, el ) {\n\t\tif ( el ) {\n\t\t\tel.append( template.body.firstChild );\n\t\t}\n\t}\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Renderer);\n\n\n//# sourceURL=webpack:///./src/lib/Renderer.js?");
 
 /***/ }),
 
@@ -310,39 +198,8 @@ class Renderer {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _lib_Page_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/Page.js */ "./src/lib/Page.js");
-/* harmony import */ var _lib_GerritQuery_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lib/GerritQuery.js */ "./src/lib/GerritQuery.js");
-/* harmony import */ var _lib_GerritResponseParser_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lib/GerritResponseParser.js */ "./src/lib/GerritResponseParser.js");
-/* harmony import */ var _lib_Renderer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lib/Renderer.js */ "./src/lib/Renderer.js");
-
-
-
-
-
-var page = new _lib_Page_js__WEBPACK_IMPORTED_MODULE_0__["default"](),
-	gerritQuery = new _lib_GerritQuery_js__WEBPACK_IMPORTED_MODULE_1__["default"]( page.ticketNumbers ),
-	parser = new _lib_GerritResponseParser_js__WEBPACK_IMPORTED_MODULE_2__["default"](),
-	renderer = new _lib_Renderer_js__WEBPACK_IMPORTED_MODULE_3__["default"]();
-
-if ( Object.keys( page.cardMap ).length > -1 ) {
-
-	gerritQuery.fetch()
-		.then( ( responseText ) => {
-			var formattedJSON = parser.formatJSON( responseText );
-
-			formattedJSON.forEach( ( data ) => {
-				const template = renderer.createDOMTemplate( data );
-				if ( page.cardMap[ data.ticketNumber ] ) {
-					page.cardMap[ data.ticketNumber ].append( template.body.firstChild );
-				}
-			} );
-		} );
-
-}
-
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _lib_Page_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./lib/Page.js */ \"./src/lib/Page.js\");\n/* harmony import */ var _lib_GerritQuery_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./lib/GerritQuery.js */ \"./src/lib/GerritQuery.js\");\n/* harmony import */ var _lib_GerritResponseParser_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lib/GerritResponseParser.js */ \"./src/lib/GerritResponseParser.js\");\n/* harmony import */ var _lib_Renderer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lib/Renderer.js */ \"./src/lib/Renderer.js\");\n/* harmony import */ var _components_PherritLink__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/PherritLink */ \"./src/components/PherritLink.js\");\n\n\n\n\n\n\nvar page = new _lib_Page_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](),\n\tgerritQuery = new _lib_GerritQuery_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"]( page.ticketNumbers ),\n\tparser = new _lib_GerritResponseParser_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"](),\n\trenderer = new _lib_Renderer_js__WEBPACK_IMPORTED_MODULE_3__[\"default\"]();\n\nif ( Object.keys( page.cardMap ).length > -1 ) {\n\n\tgerritQuery.fetch()\n\t\t.then( ( responseText ) => {\n\t\t\tvar formattedJSON = parser.formatJSON( responseText );\n\n\t\t\tformattedJSON.forEach( ( data ) => {\n\t\t\t\tconst template = new _components_PherritLink__WEBPACK_IMPORTED_MODULE_4__[\"default\"]( data ),\n\t\t\t\t\tDOMTemplate = renderer.createDOMFragment( template.string );\n\t\t\t\trenderer.appendTemplateToDOM( DOMTemplate, page.cardMap[ data.ticketNumber ] );\n\t\t\t} );\n\t\t} );\n\n}\n\n\n//# sourceURL=webpack:///./src/main.js?");
 
 /***/ })
 
 /******/ });
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vd2VicGFjay9ib290c3RyYXAiLCJ3ZWJwYWNrOi8vLy4vc3JjL2xpYi9HZXJyaXRRdWVyeS5qcyIsIndlYnBhY2s6Ly8vLi9zcmMvbGliL0dlcnJpdFJlc3BvbnNlUGFyc2VyLmpzIiwid2VicGFjazovLy8uL3NyYy9saWIvUGFnZS5qcyIsIndlYnBhY2s6Ly8vLi9zcmMvbGliL1JlbmRlcmVyLmpzIiwid2VicGFjazovLy8uL3NyYy9tYWluLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFBQTtBQUNBOztBQUVBO0FBQ0E7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUE7QUFDQTs7QUFFQTtBQUNBOztBQUVBO0FBQ0E7QUFDQTs7O0FBR0E7QUFDQTs7QUFFQTtBQUNBOztBQUVBO0FBQ0E7QUFDQTtBQUNBLGtEQUEwQyxnQ0FBZ0M7QUFDMUU7QUFDQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQSxnRUFBd0Qsa0JBQWtCO0FBQzFFO0FBQ0EseURBQWlELGNBQWM7QUFDL0Q7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBLGlEQUF5QyxpQ0FBaUM7QUFDMUUsd0hBQWdILG1CQUFtQixFQUFFO0FBQ3JJO0FBQ0E7O0FBRUE7QUFDQTtBQUNBO0FBQ0EsbUNBQTJCLDBCQUEwQixFQUFFO0FBQ3ZELHlDQUFpQyxlQUFlO0FBQ2hEO0FBQ0E7QUFDQTs7QUFFQTtBQUNBLDhEQUFzRCwrREFBK0Q7O0FBRXJIO0FBQ0E7OztBQUdBO0FBQ0E7Ozs7Ozs7Ozs7Ozs7QUNsRkE7QUFBQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBO0FBQ0E7QUFDQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EsZUFBZSxJQUFJO0FBQ25CLEtBQUs7QUFDTCxlQUFlLElBQUksRUFBRSxTQUFTO0FBQzlCO0FBQ0EsSUFBSTtBQUNKO0FBQ0E7O0FBRUE7QUFDQSxnR0FBZ0csTUFBTTtBQUN0Rzs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSxHQUFHO0FBQ0g7QUFDQTtBQUNBLElBQUk7QUFDSjtBQUNBO0FBQ0E7QUFDQSxJQUFJO0FBQ0o7QUFDQSx1QkFBdUI7QUFDdkIsSUFBSTtBQUNKO0FBQ0E7O0FBRUE7Ozs7Ozs7Ozs7Ozs7QUNsREE7QUFBQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQSxnREFBZ0QsVUFBVSxLQUFLLFVBQVU7QUFDekU7QUFDQTtBQUNBLEtBQUs7QUFDTDtBQUNBO0FBQ0EsR0FBRztBQUNIOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EsSUFBSTtBQUNKO0FBQ0E7O0FBRUE7O0FBRUE7O0FBRUE7Ozs7Ozs7Ozs7Ozs7QUNyQ0E7QUFBQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBLEdBQUc7QUFDSDs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSxHQUFHLElBQUk7QUFDUDs7QUFFQTtBQUNBO0FBQ0E7QUFDQTs7QUFFQTs7Ozs7Ozs7Ozs7OztBQzdCQTtBQUFBO0FBQ0E7QUFDQTtBQUNBOztBQUVBO0FBQ0E7QUFDQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQSxJQUFJO0FBQ0o7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EsNkJBQTZCLFNBQVMsbUJBQW1CLDZCQUE2QixtQkFBbUIsWUFBWTtBQUNySDtBQUNBLE1BQU07QUFDTjtBQUNBO0FBQ0EsTUFBTTtBQUNOO0FBQ0E7QUFDQTtBQUNBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7QUM1Q0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7O0FBRUE7O0FBRUE7QUFDQTtBQUNBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSxJQUFJO0FBQ0osR0FBRzs7QUFFSCIsImZpbGUiOiJtYWluLmpzIiwic291cmNlc0NvbnRlbnQiOlsiIFx0Ly8gVGhlIG1vZHVsZSBjYWNoZVxuIFx0dmFyIGluc3RhbGxlZE1vZHVsZXMgPSB7fTtcblxuIFx0Ly8gVGhlIHJlcXVpcmUgZnVuY3Rpb25cbiBcdGZ1bmN0aW9uIF9fd2VicGFja19yZXF1aXJlX18obW9kdWxlSWQpIHtcblxuIFx0XHQvLyBDaGVjayBpZiBtb2R1bGUgaXMgaW4gY2FjaGVcbiBcdFx0aWYoaW5zdGFsbGVkTW9kdWxlc1ttb2R1bGVJZF0pIHtcbiBcdFx0XHRyZXR1cm4gaW5zdGFsbGVkTW9kdWxlc1ttb2R1bGVJZF0uZXhwb3J0cztcbiBcdFx0fVxuIFx0XHQvLyBDcmVhdGUgYSBuZXcgbW9kdWxlIChhbmQgcHV0IGl0IGludG8gdGhlIGNhY2hlKVxuIFx0XHR2YXIgbW9kdWxlID0gaW5zdGFsbGVkTW9kdWxlc1ttb2R1bGVJZF0gPSB7XG4gXHRcdFx0aTogbW9kdWxlSWQsXG4gXHRcdFx0bDogZmFsc2UsXG4gXHRcdFx0ZXhwb3J0czoge31cbiBcdFx0fTtcblxuIFx0XHQvLyBFeGVjdXRlIHRoZSBtb2R1bGUgZnVuY3Rpb25cbiBcdFx0bW9kdWxlc1ttb2R1bGVJZF0uY2FsbChtb2R1bGUuZXhwb3J0cywgbW9kdWxlLCBtb2R1bGUuZXhwb3J0cywgX193ZWJwYWNrX3JlcXVpcmVfXyk7XG5cbiBcdFx0Ly8gRmxhZyB0aGUgbW9kdWxlIGFzIGxvYWRlZFxuIFx0XHRtb2R1bGUubCA9IHRydWU7XG5cbiBcdFx0Ly8gUmV0dXJuIHRoZSBleHBvcnRzIG9mIHRoZSBtb2R1bGVcbiBcdFx0cmV0dXJuIG1vZHVsZS5leHBvcnRzO1xuIFx0fVxuXG5cbiBcdC8vIGV4cG9zZSB0aGUgbW9kdWxlcyBvYmplY3QgKF9fd2VicGFja19tb2R1bGVzX18pXG4gXHRfX3dlYnBhY2tfcmVxdWlyZV9fLm0gPSBtb2R1bGVzO1xuXG4gXHQvLyBleHBvc2UgdGhlIG1vZHVsZSBjYWNoZVxuIFx0X193ZWJwYWNrX3JlcXVpcmVfXy5jID0gaW5zdGFsbGVkTW9kdWxlcztcblxuIFx0Ly8gZGVmaW5lIGdldHRlciBmdW5jdGlvbiBmb3IgaGFybW9ueSBleHBvcnRzXG4gXHRfX3dlYnBhY2tfcmVxdWlyZV9fLmQgPSBmdW5jdGlvbihleHBvcnRzLCBuYW1lLCBnZXR0ZXIpIHtcbiBcdFx0aWYoIV9fd2VicGFja19yZXF1aXJlX18ubyhleHBvcnRzLCBuYW1lKSkge1xuIFx0XHRcdE9iamVjdC5kZWZpbmVQcm9wZXJ0eShleHBvcnRzLCBuYW1lLCB7IGVudW1lcmFibGU6IHRydWUsIGdldDogZ2V0dGVyIH0pO1xuIFx0XHR9XG4gXHR9O1xuXG4gXHQvLyBkZWZpbmUgX19lc01vZHVsZSBvbiBleHBvcnRzXG4gXHRfX3dlYnBhY2tfcmVxdWlyZV9fLnIgPSBmdW5jdGlvbihleHBvcnRzKSB7XG4gXHRcdGlmKHR5cGVvZiBTeW1ib2wgIT09ICd1bmRlZmluZWQnICYmIFN5bWJvbC50b1N0cmluZ1RhZykge1xuIFx0XHRcdE9iamVjdC5kZWZpbmVQcm9wZXJ0eShleHBvcnRzLCBTeW1ib2wudG9TdHJpbmdUYWcsIHsgdmFsdWU6ICdNb2R1bGUnIH0pO1xuIFx0XHR9XG4gXHRcdE9iamVjdC5kZWZpbmVQcm9wZXJ0eShleHBvcnRzLCAnX19lc01vZHVsZScsIHsgdmFsdWU6IHRydWUgfSk7XG4gXHR9O1xuXG4gXHQvLyBjcmVhdGUgYSBmYWtlIG5hbWVzcGFjZSBvYmplY3RcbiBcdC8vIG1vZGUgJiAxOiB2YWx1ZSBpcyBhIG1vZHVsZSBpZCwgcmVxdWlyZSBpdFxuIFx0Ly8gbW9kZSAmIDI6IG1lcmdlIGFsbCBwcm9wZXJ0aWVzIG9mIHZhbHVlIGludG8gdGhlIG5zXG4gXHQvLyBtb2RlICYgNDogcmV0dXJuIHZhbHVlIHdoZW4gYWxyZWFkeSBucyBvYmplY3RcbiBcdC8vIG1vZGUgJiA4fDE6IGJlaGF2ZSBsaWtlIHJlcXVpcmVcbiBcdF9fd2VicGFja19yZXF1aXJlX18udCA9IGZ1bmN0aW9uKHZhbHVlLCBtb2RlKSB7XG4gXHRcdGlmKG1vZGUgJiAxKSB2YWx1ZSA9IF9fd2VicGFja19yZXF1aXJlX18odmFsdWUpO1xuIFx0XHRpZihtb2RlICYgOCkgcmV0dXJuIHZhbHVlO1xuIFx0XHRpZigobW9kZSAmIDQpICYmIHR5cGVvZiB2YWx1ZSA9PT0gJ29iamVjdCcgJiYgdmFsdWUgJiYgdmFsdWUuX19lc01vZHVsZSkgcmV0dXJuIHZhbHVlO1xuIFx0XHR2YXIgbnMgPSBPYmplY3QuY3JlYXRlKG51bGwpO1xuIFx0XHRfX3dlYnBhY2tfcmVxdWlyZV9fLnIobnMpO1xuIFx0XHRPYmplY3QuZGVmaW5lUHJvcGVydHkobnMsICdkZWZhdWx0JywgeyBlbnVtZXJhYmxlOiB0cnVlLCB2YWx1ZTogdmFsdWUgfSk7XG4gXHRcdGlmKG1vZGUgJiAyICYmIHR5cGVvZiB2YWx1ZSAhPSAnc3RyaW5nJykgZm9yKHZhciBrZXkgaW4gdmFsdWUpIF9fd2VicGFja19yZXF1aXJlX18uZChucywga2V5LCBmdW5jdGlvbihrZXkpIHsgcmV0dXJuIHZhbHVlW2tleV07IH0uYmluZChudWxsLCBrZXkpKTtcbiBcdFx0cmV0dXJuIG5zO1xuIFx0fTtcblxuIFx0Ly8gZ2V0RGVmYXVsdEV4cG9ydCBmdW5jdGlvbiBmb3IgY29tcGF0aWJpbGl0eSB3aXRoIG5vbi1oYXJtb255IG1vZHVsZXNcbiBcdF9fd2VicGFja19yZXF1aXJlX18ubiA9IGZ1bmN0aW9uKG1vZHVsZSkge1xuIFx0XHR2YXIgZ2V0dGVyID0gbW9kdWxlICYmIG1vZHVsZS5fX2VzTW9kdWxlID9cbiBcdFx0XHRmdW5jdGlvbiBnZXREZWZhdWx0KCkgeyByZXR1cm4gbW9kdWxlWydkZWZhdWx0J107IH0gOlxuIFx0XHRcdGZ1bmN0aW9uIGdldE1vZHVsZUV4cG9ydHMoKSB7IHJldHVybiBtb2R1bGU7IH07XG4gXHRcdF9fd2VicGFja19yZXF1aXJlX18uZChnZXR0ZXIsICdhJywgZ2V0dGVyKTtcbiBcdFx0cmV0dXJuIGdldHRlcjtcbiBcdH07XG5cbiBcdC8vIE9iamVjdC5wcm90b3R5cGUuaGFzT3duUHJvcGVydHkuY2FsbFxuIFx0X193ZWJwYWNrX3JlcXVpcmVfXy5vID0gZnVuY3Rpb24ob2JqZWN0LCBwcm9wZXJ0eSkgeyByZXR1cm4gT2JqZWN0LnByb3RvdHlwZS5oYXNPd25Qcm9wZXJ0eS5jYWxsKG9iamVjdCwgcHJvcGVydHkpOyB9O1xuXG4gXHQvLyBfX3dlYnBhY2tfcHVibGljX3BhdGhfX1xuIFx0X193ZWJwYWNrX3JlcXVpcmVfXy5wID0gXCJcIjtcblxuXG4gXHQvLyBMb2FkIGVudHJ5IG1vZHVsZSBhbmQgcmV0dXJuIGV4cG9ydHNcbiBcdHJldHVybiBfX3dlYnBhY2tfcmVxdWlyZV9fKF9fd2VicGFja19yZXF1aXJlX18ucyA9IFwiLi9zcmMvbWFpbi5qc1wiKTtcbiIsIi8qKlxuICogQ2xhc3MgdGhhdCBidWlsZHMgYW5kIGV4ZWN1dGVzIHRoZSBHZXJyaXQgcXVlcnkuXG4gKi9cbmNsYXNzIEdlcnJpdFF1ZXJ5IHtcblx0Y29uc3RydWN0b3IoIHRpY2tldE51bWJlcnMgKSB7XG5cdFx0dGhpcy5xdWVyeVN0cmluZyA9IHRoaXMuY3JlYXRlUXVlcnlTdHJpbmcoIHRpY2tldE51bWJlcnMgKTtcblx0XHR0aGlzLnF1ZXJ5VXJsID0gdGhpcy5jcmVhdGVVcmwoIHRoaXMucXVlcnlTdHJpbmcgKTtcblx0fVxuXG5cdGdldCB1cmwoKSB7XG5cdFx0cmV0dXJuIHRoaXMucXVlcnlVcmw7XG5cdH1cblxuXHRjcmVhdGVRdWVyeVN0cmluZyggdGlja2V0TnVtYmVycyApIHtcblx0XHR2YXIgY29tYmluZXIgPSAnK09SKycsXG5cdFx0XHR0aWNrZXRzTGVuZ3RoID0gdGlja2V0TnVtYmVycy5sZW5ndGgsXG5cdFx0XHRxdWVyeUVsZW1lbnRzID0gdGlja2V0TnVtYmVycy5tYXAoICggbnVtLCBpICkgPT4ge1xuXHRcdFx0XHRpZiAoIGkgPT09IHRpY2tldHNMZW5ndGggLSAxICkge1xuXHRcdFx0XHRcdHJldHVybiBgJHtudW19YDtcblx0XHRcdFx0fSBlbHNlIHtcblx0XHRcdFx0XHRyZXR1cm4gYCR7bnVtfSR7Y29tYmluZXJ9YDtcblx0XHRcdFx0fVxuXHRcdFx0fSApO1xuXHRcdHJldHVybiBxdWVyeUVsZW1lbnRzLmpvaW4oICcnICk7XG5cdH1cblxuXHRjcmVhdGVVcmwoIHF1ZXJ5ICkge1xuXHRcdHJldHVybiBgaHR0cHM6Ly9nZXJyaXQud2lraW1lZGlhLm9yZy9yL2NoYW5nZXMvP3BwPTAmbz1UUkFDS0lOR19JRFMmbz1ERVRBSUxFRF9MQUJFTFMmcT1idWc6JHtxdWVyeX1gO1xuXHR9XG5cblx0ZmV0Y2goKSB7XG5cdFx0cmV0dXJuIGZldGNoKCB0aGlzLnVybCwge1xuXHRcdFx0aGVhZGVyczoge1xuXHRcdFx0XHRBY2NlcHQ6ICdhcHBsaWNhdGlvbi9qc29uJyxcblx0XHRcdFx0J0NvbnRlbnQtVHlwZSc6ICdhcHBsaWNhdGlvbi9qc29uJ1xuXHRcdFx0fVxuXHRcdH0gKVxuXHRcdFx0LnRoZW4oICggcmVzcG9uc2UgKSA9PiB7XG5cdFx0XHRcdHJldHVybiByZXNwb25zZS50ZXh0KCk7XG5cdFx0XHR9IClcblx0XHRcdC50aGVuKCAoIHJlc3BvbnNlVGV4dCApID0+IHtcblx0XHRcdFx0cmVzcG9uc2VUZXh0ID0gcmVzcG9uc2VUZXh0LnJlcGxhY2UoIC9eLipcXG4vLCAnJyApO1xuXHRcdFx0XHRyZXR1cm4gSlNPTi5wYXJzZSggcmVzcG9uc2VUZXh0ICk7XG5cdFx0XHR9IClcblx0XHRcdC5jYXRjaCggKCBlcnIgKSA9PiB7XG5cdFx0XHRcdGNvbnNvbGUubG9nKCBlcnIgKTsgLy8gZXNsaW50LWRpc2FibGUtbGluZVxuXHRcdFx0fSApO1xuXHR9XG59XG5cbmV4cG9ydCBkZWZhdWx0IEdlcnJpdFF1ZXJ5O1xuIiwiLyoqXG4gKiBDbGFzcyB0aGF0IHBhcnNlcyB0aGUgcmVzcG9uc2UgZnJvbSB0aGUgUGhhYnJpY2F0b3IgQVBJIGFuZCByZXR1cm5zIGp1c3QgdGhlIG5lY2Vzc2FyeSBkYXRhLlxuICovXG5jbGFzcyBHZXJyaXRSZXNwb25zZVBhcnNlciB7XG5cdGZvcm1hdEpTT04oIHJlc3BvbnNlICkge1xuXHRcdHJldHVybiByZXNwb25zZS5yZWR1Y2UoICggYWNjLCByICkgPT4ge1xuXHRcdFx0dmFyIHBoYWIgPSByLnRyYWNraW5nX2lkcy5maW5kKCAoIGkgKSA9PiBpLnN5c3RlbSA9PT0gJ1BoYWInICk7XG5cblx0XHRcdGlmICggcGhhYiApIHtcblxuXHRcdFx0XHRhY2MucHVzaCgge1xuXHRcdFx0XHRcdHRpY2tldE51bWJlcjogcGhhYi5pZCxcblx0XHRcdFx0XHR0aXRsZTogci5zdWJqZWN0LFxuXHRcdFx0XHRcdHVybDogYGh0dHBzOi8vZ2Vycml0Lndpa2ltZWRpYS5vcmcvci8jL2MvJHtyLnByb2plY3R9LysvJHtyLl9udW1iZXJ9L2AsIC8vIGVzbGludC1kaXNhYmxlLWxpbmVcblx0XHRcdFx0XHRjb2RlUmV2aWV3U2NvcmU6IHRoaXMucGFyc2VDb2RlUmV2aWV3U2NvcmUoIHIgKSB8fCAwLFxuXHRcdFx0XHRcdHN0YXR1czogci5zdGF0dXNcblx0XHRcdFx0fSApO1xuXHRcdFx0fVxuXHRcdFx0cmV0dXJuIGFjYztcblx0XHR9LCBbXSApO1xuXHR9XG5cblx0cGFyc2VDb2RlUmV2aWV3U2NvcmUoIHIgKSB7XG5cdFx0aWYgKCByLmxhYmVsc1sgJ0NvZGUtUmV2aWV3JyBdICYmIHIubGFiZWxzWyAnQ29kZS1SZXZpZXcnIF0uYWxsICkge1xuXHRcdFx0cmV0dXJuIHIubGFiZWxzWyAnQ29kZS1SZXZpZXcnIF0uYWxsLnJlZHVjZSggKCBjLCB2ICkgPT4ge1xuXHRcdFx0XHRpZiAoIHYudmFsdWUgIT09IDAgKSB7XG5cdFx0XHRcdFx0Yy5wdXNoKCB2LnZhbHVlICk7XG5cdFx0XHRcdH1cblx0XHRcdFx0cmV0dXJuIGM7XG5cdFx0XHR9LCBbXSApO1xuXHRcdH1cblx0XHRyZXR1cm4gWyAwIF07XG5cblx0fVxuXG59XG5cbmV4cG9ydCBkZWZhdWx0IEdlcnJpdFJlc3BvbnNlUGFyc2VyO1xuIiwiLyoqXG4gKiBDbGFzcyB0aGF0IGFic3RyYWN0cyB0aGUgUGhhYnJpY2F0b3IgRE9NIGVsZW1lbnRzXG4gKi9cbmNsYXNzIFBhZ2Uge1xuXHRnZXQgY2FyZHMoKSB7XG5cdFx0cmV0dXJuIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoICdbZGF0YS1zaWdpbD1cIiBwcm9qZWN0LWNhcmRcIl0nICk7XG5cdH1cblxuXHRnZXQgdGlja2V0TnVtYmVycygpIHtcblx0XHRjb25zdCBjYXJkQXJyYXkgPSBBcnJheS5mcm9tKCB0aGlzLmNhcmRzICk7XG5cdFx0cmV0dXJuIGNhcmRBcnJheS5tYXAoICggY2FyZCApID0+IHtcblx0XHRcdHJldHVybiB0aGlzLmdldFRpY2tldE51bWJlckZyb21DYXJkKCBjYXJkICk7XG5cdFx0fSApO1xuXHR9XG5cblx0Z2V0IGNhcmRNYXAoKSB7XG5cdFx0Y29uc3QgY2FyZEFycmF5ID0gQXJyYXkuZnJvbSggdGhpcy5jYXJkcyApO1xuXHRcdHJldHVybiBjYXJkQXJyYXkucmVkdWNlKCAoIGNhcmRPYmosIGNhcmQgKSA9PiB7XG5cdFx0XHRjb25zdCBudW0gPSB0aGlzLmdldFRpY2tldE51bWJlckZyb21DYXJkKCBjYXJkICk7XG5cdFx0XHRjYXJkT2JqWyBudW0gXSA9IGNhcmQ7XG5cdFx0XHRyZXR1cm4gY2FyZE9iajtcblx0XHR9LCB7fSApO1xuXHR9XG5cblx0Z2V0VGlja2V0TnVtYmVyRnJvbUNhcmQoIGNhcmRET00gKSB7XG5cdFx0cmV0dXJuIGNhcmRET00ucXVlcnlTZWxlY3RvciggJy5waHVpLW9pLW9iam5hbWUnICkuaW5uZXJIVE1MO1xuXHR9XG59XG5cbmV4cG9ydCBkZWZhdWx0IFBhZ2U7XG4iLCIvKipcbiAqIENsYXNzIHJlc3BvbnNpYmxlIGZvciB0YWtpbmcgZGF0YSBhbmQgcmVuZGVyaW5nIGl0IGludG8gdGhlIERPTVxuICovXG5jbGFzcyBSZW5kZXJlciB7XG5cblx0Y29uc3RydWN0b3IoKSB7XG5cdFx0dGhpcy5wYXJzZXIgPSBuZXcgRE9NUGFyc2VyKCk7XG5cdH1cblxuXHRjcmVhdGVUZW1wbGF0ZVN0cmluZyggZGF0YSApIHtcblx0XHRjb25zdCB0b3RhbFNjb3JlID0gZGF0YS5jb2RlUmV2aWV3U2NvcmUucmVkdWNlKCAoIHMsIGkgKSA9PiB7XG5cdFx0XHRcdHJldHVybiBzICsgaTtcblx0XHRcdH0sIDAgKSxcblx0XHRcdGF2ZXJhZ2VTY29yZSA9IE1hdGgucm91bmQoIHRvdGFsU2NvcmUgLyBkYXRhLmNvZGVSZXZpZXdTY29yZS5sZW5ndGggKSB8fCAwLFxuXHRcdFx0c2NvcmVDbGFzc2VzID0ge1xuXHRcdFx0XHQnLTInOiAncGhlcnJpdC0tdmVyeS1sb3cnLFxuXHRcdFx0XHQnLTEnOiAncGhlcnJpdC0tbG93Jyxcblx0XHRcdFx0MDogJ3BoZXJyaXQtLW5ldXRyYWwnLFxuXHRcdFx0XHQxOiAncGhlcnJpdC0tbWVkaXVtJyxcblx0XHRcdFx0MjogJ3BoZXJyaXQtLWhpZ2gnXG5cdFx0XHR9O1xuXHRcdHJldHVybiBgXG5cdFx0PGEgdGFyZ2V0PVwiX2JsYW5rXCIgaHJlZj1cIiR7ZGF0YS51cmx9XCIgY2xhc3M9XCJwaGVycml0ICR7c2NvcmVDbGFzc2VzWyBhdmVyYWdlU2NvcmUgXX0gcGhlcnJpdC0tc3RhdHVzLSR7ZGF0YS5zdGF0dXN9XCI+XG5cdFx0XHQ8c3BhbiBjbGFzcz1cInBoZXJyaXRfX3RpdGxlXCI+XG5cdFx0XHRcdCR7ZGF0YS50aXRsZX1cblx0XHRcdDwvc3Bhbj5cblx0XHRcdDxzcGFuIGNsYXNzPVwicGhlcnJpdF9fc2NvcmVcIj5cblx0XHRcdFx0JHtkYXRhLmNvZGVSZXZpZXdTY29yZS5qb2luKCAnLCcgKX1cblx0XHRcdDwvc3Bhbj5cblx0XHQ8L2E+XG5cdFx0YDtcblx0fVxuXG5cdGNyZWF0ZURPTUZyYWdtZW50KCBzdHJpbmcgKSB7XG5cdFx0dmFyIGZyYWdtZW50ID0gdGhpcy5wYXJzZXIucGFyc2VGcm9tU3RyaW5nKCBzdHJpbmcsICd0ZXh0L2h0bWwnICk7XG5cdFx0cmV0dXJuIGZyYWdtZW50O1xuXHR9XG5cdGNyZWF0ZURPTVRlbXBsYXRlKCBkYXRhICkge1xuXHRcdHZhciBkb21TdHJpbmcgPSB0aGlzLmNyZWF0ZVRlbXBsYXRlU3RyaW5nKCBkYXRhICksXG5cdFx0XHRkb21GcmFnbWVudCA9IHRoaXMuY3JlYXRlRE9NRnJhZ21lbnQoIGRvbVN0cmluZyApO1xuXHRcdHJldHVybiBkb21GcmFnbWVudDtcblx0fVxufVxuXG5leHBvcnQgZGVmYXVsdCBSZW5kZXJlcjtcbiIsImltcG9ydCBQYWdlIGZyb20gJy4vbGliL1BhZ2UuanMnO1xuaW1wb3J0IEdlcnJpdFF1ZXJ5IGZyb20gJy4vbGliL0dlcnJpdFF1ZXJ5LmpzJztcbmltcG9ydCBHZXJyaXRSZXNwb25zZVBhcnNlciBmcm9tICcuL2xpYi9HZXJyaXRSZXNwb25zZVBhcnNlci5qcyc7XG5pbXBvcnQgUmVuZGVyZXIgZnJvbSAnLi9saWIvUmVuZGVyZXIuanMnO1xuXG52YXIgcGFnZSA9IG5ldyBQYWdlKCksXG5cdGdlcnJpdFF1ZXJ5ID0gbmV3IEdlcnJpdFF1ZXJ5KCBwYWdlLnRpY2tldE51bWJlcnMgKSxcblx0cGFyc2VyID0gbmV3IEdlcnJpdFJlc3BvbnNlUGFyc2VyKCksXG5cdHJlbmRlcmVyID0gbmV3IFJlbmRlcmVyKCk7XG5cbmlmICggT2JqZWN0LmtleXMoIHBhZ2UuY2FyZE1hcCApLmxlbmd0aCA+IC0xICkge1xuXG5cdGdlcnJpdFF1ZXJ5LmZldGNoKClcblx0XHQudGhlbiggKCByZXNwb25zZVRleHQgKSA9PiB7XG5cdFx0XHR2YXIgZm9ybWF0dGVkSlNPTiA9IHBhcnNlci5mb3JtYXRKU09OKCByZXNwb25zZVRleHQgKTtcblxuXHRcdFx0Zm9ybWF0dGVkSlNPTi5mb3JFYWNoKCAoIGRhdGEgKSA9PiB7XG5cdFx0XHRcdGNvbnN0IHRlbXBsYXRlID0gcmVuZGVyZXIuY3JlYXRlRE9NVGVtcGxhdGUoIGRhdGEgKTtcblx0XHRcdFx0aWYgKCBwYWdlLmNhcmRNYXBbIGRhdGEudGlja2V0TnVtYmVyIF0gKSB7XG5cdFx0XHRcdFx0cGFnZS5jYXJkTWFwWyBkYXRhLnRpY2tldE51bWJlciBdLmFwcGVuZCggdGVtcGxhdGUuYm9keS5maXJzdENoaWxkICk7XG5cdFx0XHRcdH1cblx0XHRcdH0gKTtcblx0XHR9ICk7XG5cbn1cbiJdLCJzb3VyY2VSb290IjoiIn0=

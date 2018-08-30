@@ -2,6 +2,7 @@ import Page from './lib/Page.js';
 import GerritQuery from './lib/GerritQuery.js';
 import GerritResponseParser from './lib/GerritResponseParser.js';
 import Renderer from './lib/Renderer.js';
+import PherritLink from './components/PherritLink';
 
 var page = new Page(),
 	gerritQuery = new GerritQuery( page.ticketNumbers ),
@@ -15,10 +16,9 @@ if ( Object.keys( page.cardMap ).length > -1 ) {
 			var formattedJSON = parser.formatJSON( responseText );
 
 			formattedJSON.forEach( ( data ) => {
-				const template = renderer.createDOMTemplate( data );
-				if ( page.cardMap[ data.ticketNumber ] ) {
-					page.cardMap[ data.ticketNumber ].append( template.body.firstChild );
-				}
+				const template = new PherritLink( data ),
+					DOMTemplate = renderer.createDOMFragment( template.string );
+				renderer.appendTemplateToDOM( DOMTemplate, page.cardMap[ data.ticketNumber ] );
 			} );
 		} );
 

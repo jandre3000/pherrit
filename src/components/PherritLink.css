@@ -20,9 +20,20 @@
     background-color: #f6fff7;
     color: #005600;
 }
-.pherrit--high {
+.pherrit--high, .pherrit--status-MERGED {
     background-color: #dbfddb;
     color: #005600;
+}
+
+.pherrit--status-MERGED {
+	text-decoration: line-through;
+    }
+
+.pherrit--status-ABANDONED {
+	background-color: #cccccc;
+	color: #656565;
+	text-decoration: line-through;
+	opacity: 0.5;
 }
 
 .pherrit__title {
@@ -30,15 +41,13 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    flex-grow: 2;
+    flex-grow: 0;
 }
 
 .pherrit__score {
-    min-width: 1rem;
-    flex-grow: 0;
+    flex-grow: 2;
     font-weight: bold;
-}
-
-.pherrit--status-MERGED {
-    text-decoration: line-through;
+    align-self: flex-end;
+    white-space: nowrap;
+    text-align: right;
 }
