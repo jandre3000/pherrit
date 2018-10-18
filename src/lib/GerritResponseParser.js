@@ -30,9 +30,16 @@ class GerritResponseParser {
 			}, [] );
 		}
 		return [ 0 ];
-
 	}
 
+	groupByTicketAndStatus( patches ) {
+		return patches.reduce( ( reducer, p ) => {
+			reducer[ p.ticketNumber ] = reducer[ p.ticketNumber ] || {};
+			reducer[ p.ticketNumber ][ p.status ] = reducer[ p.ticketNumber ][ p.status ] || [];
+			reducer[ p.ticketNumber ][ p.status ].push( p );
+			return reducer;
+		}, {} );
+	}
 }
 
 export default GerritResponseParser;

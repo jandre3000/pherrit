@@ -4,8 +4,8 @@
   "description": "A browser extension that adds Gerrit patches to the Wikimedia Phabricator UI",
   "main": "src/main.js",
   "scripts": {
-    "compile.dev": "webpack",
-    "test": "webpack --config=webpack.config.tests.js"
+    "start": "webpack --watch",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",

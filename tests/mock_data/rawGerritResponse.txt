@@ -1,0 +1,174 @@
+?>Why does my gerrit query return garbage on the first line? I'm probably doing something wrong...
+[
+	{
+		"tracking_ids": [ {
+			"system": "Phab",
+			"id": "T205128"
+		} ],
+		"subject": "Patch subject ladida",
+		"project": "repo_name",
+		"_number": "patch_number_12345",
+		"status": "MERGED",
+		"labels": {
+			"Code-Review" : {
+				"all": [
+					{ "value": 1 },
+					{ "value": 2 },
+					{ "value": -1 }
+				]
+			}
+		}
+	},
+	{
+		"tracking_ids": [ {
+			"system": "Phab",
+			"id": "T205128"
+		} ],
+		"subject": "Patch subject ladida",
+		"project": "repo_name",
+		"_number": "patch_number_12345",
+		"status": "NEW",
+		"labels": {
+			"Code-Review" : {
+				"all": [
+					{ "value": 1 },
+					{ "value": 2 },
+					{ "value": -1 }
+				]
+			}
+		}
+	},
+	{
+		"tracking_ids": [ {
+			"system": "Phab",
+			"id": "T205128"
+		} ],
+		"subject": "Patch subject ladida",
+		"project": "repo_name",
+		"_number": "patch_number_12345",
+		"status": "MERGED",
+		"labels": {
+			"Code-Review" : {
+				"all": [
+					{ "value": 1 },
+					{ "value": 2 },
+					{ "value": -1 }
+				]
+			}
+		}
+	},
+	{
+		"tracking_ids": [ {
+			"system": "Phab",
+			"id": "T205128"
+		} ],
+		"subject": "Patch subject ladida",
+		"project": "repo_name",
+		"_number": "patch_number_12345",
+		"status": "ABANDONED",
+		"labels": {
+			"Code-Review" : {
+				"all": [
+					{ "value": 1 },
+					{ "value": 2 },
+					{ "value": -1 }
+				]
+			}
+		}
+	},
+	{
+		"tracking_ids": [ {
+			"system": "Phab",
+			"id": "T205128"
+		} ],
+		"subject": "Patch subject ladida",
+		"project": "repo_name",
+		"_number": "patch_number_12345",
+		"status": "MERGED",
+		"labels": {
+			"Code-Review" : {
+				"all": [
+					{ "value": 1 },
+					{ "value": 2 },
+					{ "value": -1 }
+				]
+			}
+		}
+	},
+	{
+		"tracking_ids": [ {
+			"system": "Phab",
+			"id": "T205128"
+		} ],
+		"subject": "Patch subject ladida",
+		"project": "repo_name",
+		"_number": "patch_number_12345",
+		"status": "MERGED",
+		"labels": {
+			"Code-Review" : {
+				"all": [
+					{ "value": 1 },
+					{ "value": 2 },
+					{ "value": -1 }
+				]
+			}
+		}
+	},
+	{
+		"tracking_ids": [ {
+			"system": "Phab",
+			"id": "T205128"
+		} ],
+		"subject": "Patch subject ladida",
+		"project": "repo_name",
+		"_number": "patch_number_12345",
+		"status": "MERGED",
+		"labels": {
+			"Code-Review" : {
+				"all": [
+					{ "value": 1 },
+					{ "value": 2 },
+					{ "value": -1 }
+				]
+			}
+		}
+	},
+		{
+		"tracking_ids": [ {
+			"system": "Phab",
+			"id": "T205128"
+		} ],
+		"subject": "Patch subject ladida",
+		"project": "repo_name",
+		"_number": "patch_number_12345",
+		"status": "MERGED",
+		"labels": {
+			"Code-Review" : {
+				"all": [
+					{ "value": 1 },
+					{ "value": 2 },
+					{ "value": -1 }
+				]
+			}
+		}
+	},
+		{
+		"tracking_ids": [ {
+			"system": "Phab",
+			"id": "T205128"
+		} ],
+		"subject": "Patch subject ladida",
+		"project": "repo_name",
+		"_number": "patch_number_12345",
+		"status": "ABANDONED",
+		"labels": {
+			"Code-Review" : {
+				"all": [
+					{ "value": 1 },
+					{ "value": 2 },
+					{ "value": -1 }
+				]
+			}
+		}
+	}
+]

@@ -1,0 +1,21 @@
+.pherrit-group {
+}
+.pherrit-group--status-MERGED {
+	background-color: #dbfddb;
+	color: #005600;
+}
+
+.pherrit-group--status-ABANDONED {
+	background-color: #cccccc;
+	color: #656565;
+}
+
+.pherrit-group__summary {
+	font-size: 0.75rem;
+	padding: 0.2rem 0.5rem;
+	cursor: pointer;
+}
+
+.pherrit-group__group-name {
+	text-transform: lowercase;
+}

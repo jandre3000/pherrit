@@ -25,7 +25,10 @@ class GerritQuery {
 	}
 
 	createUrl( query ) {
+		// for developement, using mock data and mock page in tests directory
+		// return 'http://localhost:3030/tests/mock_data/rawGerritResponse.txt';
 		return `https://gerrit.wikimedia.org/r/changes/?pp=0&o=TRACKING_IDS&o=DETAILED_LABELS&q=bug:${query}`;
+
 	}
 
 	fetch() {
