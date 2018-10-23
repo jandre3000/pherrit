@@ -7,8 +7,8 @@
     border-bottom: 1px solid rgba(168, 168, 168, 0.5);
 }
 .pherrit--very-low {
-    background-color: red;
-    color: darkRed;
+    background-color: rgb(220, 146, 146);
+    color: rgb(80, 12, 12);
 }
 .pherrit--low {
     background-color: #ffd5d5;

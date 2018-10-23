@@ -24,7 +24,7 @@ if ( Object.keys( page.cardMap ).length > -1 ) {
 						template,
 						templateString;
 					// group sets of non-new patches
-					if ( patchGroupName !== 'NEW' ) {
+					if ( patchGroup.length > 1 && patchGroupName !== 'NEW' ) {
 						template = new PherritLinkGroup(
 							patchGroupName,
 							patchGroup.map( ( patch ) => new PherritLink( patch ) )
@@ -36,6 +36,7 @@ if ( Object.keys( page.cardMap ).length > -1 ) {
 							return tmpGroup;
 						}, '' );
 					}
+
 					templateString = template.string || template;
 					domFragment = renderer.createDOMFragment( templateString );
 					renderer.appendTemplateToDOM( domFragment, page.cardMap[ ticketId ] );
