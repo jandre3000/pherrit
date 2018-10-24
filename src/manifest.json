@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "Pherrit",
 	"description": "Wikimedia Phabricator + Gerrit.",
-	"version": "1",
+	"version": "1.1",
 	"author": "Jan Drewniak",
 	"permissions": ["activeTab"],
 	"icons": {
