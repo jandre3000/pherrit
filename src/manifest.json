@@ -5,7 +5,10 @@
 	"version": "1",
 	"author": "Jan Drewniak",
 	"permissions": ["activeTab"],
-	"icons": { "128": "pherrit-logo.png" },
+	"icons": {
+		"128": "pherrit-logo.png",
+		"48": "pherrit-logo-48.png"
+	},
 	"content_scripts": [
 		{
 		  "matches": ["https://gerrit.wikimedia.org/*", "https://phabricator.wikimedia.org/*"],
