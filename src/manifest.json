@@ -5,6 +5,7 @@
 	"version": "1",
 	"author": "Jan Drewniak",
 	"permissions": ["activeTab"],
+	"update_url": "https://j4n-co.github.io/pherrit/updates.xml",
 	"content_scripts": [
 		{
 		  "matches": ["https://gerrit.wikimedia.org/*", "https://phabricator.wikimedia.org/*"],

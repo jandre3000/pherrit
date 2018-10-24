@@ -1,2 +1,4 @@
 node_modules
 tests/components/build
+build
+key.pem

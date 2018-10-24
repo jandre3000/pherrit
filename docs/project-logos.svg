@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="244px" height="52px" viewBox="0 0 244 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>project-logos</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polyline id="path-1" points="0 0 22.5380859 22.2800378 22.5380859 39.4512772 26.4619141 39.4512772 26.4619141 22.2800378 49 0 49 50 0 50"></polyline>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Gerrit_icon" transform="translate(192.000000, 4.000000)" fill-rule="nonzero">
+            <rect id="Rectangle-path" fill="#FFAAAA" x="0" y="0" width="33.8461538" height="33.8461538" rx="3.34615386"></rect>
+            <rect id="Rectangle-path" fill="#AAFFAA" x="10.1538462" y="10.1538462" width="33.8461538" height="33.8461538" rx="3.34615386"></rect>
+            <polygon id="Shape" fill="#FF0000" points="15.2307692 18.6153846 25.3846154 18.6153846 25.3846154 22 15.2307692 22"></polygon>
+            <polygon id="Shape" fill="#FF0000" points="28.7692308 18.6153846 38.9230769 18.6153846 38.9230769 22 28.7692308 22"></polygon>
+            <polygon id="Shape" fill="#008000" points="15.2307692 30.4615385 18.6153846 30.4615385 18.6153846 27.0769231 22 27.0769231 22 30.4615385 25.3846154 30.4615385 25.3846154 33.8461538 22 33.8461538 22 37.2307692 18.6153846 37.2307692 18.6153846 33.8461538 15.2307692 33.8461538"></polygon>
+            <polygon id="Shape" fill="#008000" points="28.7692308 30.4615385 32.1538462 30.4615385 32.1538462 27.0769231 35.5384615 27.0769231 35.5384615 30.4615385 38.9230769 30.4615385 38.9230769 33.8461538 35.5384615 33.8461538 35.5384615 37.2307692 32.1538462 37.2307692 32.1538462 33.8461538 28.7692308 33.8461538"></polygon>
+        </g>
+        <g id="Wikimedia-logo_black" transform="translate(4.000000, 1.000000)">
+            <g id="Clipped">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="Shape"></g>
+                <g id="Group" mask="url(#mask-2)">
+                    <g transform="translate(4.880859, 6.385998)" id="Shape">
+                        <path d="M19.5712891,5.77105014 C11.9695026,5.79714318 5.82471375,11.9032982 5.83791139,19.4180825 C5.85110904,26.9328669 12.0173084,33.0178933 19.6191406,33.0178933 C27.2209729,33.0178933 33.3871722,26.9328669 33.4003699,19.4180825 C33.4135675,11.9032982 27.2687786,5.79714318 19.6669922,5.77105014" stroke="none" fill="#000000" fill-rule="nonzero"></path>
+                        <path d="M19.5712891,0 C8.74531152,0.0261025809 -0.0131878718,8.71605673 1.45889181e-05,19.4181069 C0.0132170496,30.1201572 8.79313088,38.7889679 19.6191406,38.7889679 C30.4451504,38.7889679 39.2250642,30.1201572 39.2382667,19.4181069 C39.2514691,8.71605673 30.4929697,0.0261025809 19.6669922,0" stroke="#000000" stroke-width="5.49908981" fill="none"></path>
+                    </g>
+                </g>
+            </g>
+            <path d="M24.4521484,2.88552507 C20.2859977,2.91159174 16.9263066,6.26449777 16.939491,10.3830103 C16.9526753,14.5015228 20.3337659,17.8333413 24.5,17.8333413 C28.6662341,17.8333413 32.0473247,14.5015228 32.060509,10.3830103 C32.0736934,6.26449777 28.7140023,2.91159174 24.5478516,2.88552507 L24.4521484,2.88552507 Z" id="Shape" fill="#000000" fill-rule="nonzero"></path>
+        </g>
+        <g id="Phacility_phabricator_logo" transform="translate(94.000000, -1.000000)">
+            <g id="a" transform="translate(8.611511, 6.945950)" fill="#000000" fill-rule="nonzero">
+                <g id="b" transform="translate(5.946043, 5.846056)">
+                    <g id="c" transform="translate(12.302158, 0.000000)">
+                        <polyline id="e" points="3.11654676 4.23335113 2.8705036 0 0.410071942 0 0.156647482 4.23335113"></polyline>
+                        <g id="e-link" transform="translate(1.640288, 25.299313) scale(-1, 1) rotate(-180.000000) translate(-1.640288, -25.299313) translate(0.000000, 23.182637)">
+                            <polyline id="e" points="3.11654676 4.23335113 2.8705036 0 0.410071942 0 0.156647482 4.23335113"></polyline>
+                        </g>
+                    </g>
+                    <g id="c-link" transform="translate(13.942446, 13.707994) rotate(90.000000) translate(-13.942446, -13.707994) translate(12.302158, 0.000000)">
+                        <g id="c">
+                            <polyline id="e" points="3.11654676 4.23335113 2.8705036 0 0.410071942 0 0.156647482 4.23335113"></polyline>
+                            <g id="e-link" transform="translate(1.640288, 25.299313) scale(-1, 1) rotate(-180.000000) translate(-1.640288, -25.299313) translate(0.000000, 23.182637)">
+                                <polyline id="e" points="3.11654676 4.23335113 2.8705036 0 0.410071942 0 0.156647482 4.23335113"></polyline>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+                <g id="b-link" transform="translate(19.888489, 19.554050) rotate(45.000000) translate(-19.888489, -19.554050) translate(5.946043, 5.846056)">
+                    <g id="b">
+                        <g id="c" transform="translate(12.302158, 0.000000)">
+                            <polyline id="e" points="3.11654676 4.23335113 2.8705036 0 0.410071942 0 0.156647482 4.23335113"></polyline>
+                            <g id="e-link" transform="translate(1.640288, 25.299313) scale(-1, 1) rotate(-180.000000) translate(-1.640288, -25.299313) translate(0.000000, 23.182637)">
+                                <polyline id="e" points="3.11654676 4.23335113 2.8705036 0 0.410071942 0 0.156647482 4.23335113"></polyline>
+                            </g>
+                        </g>
+                        <g id="c-link" transform="translate(13.942446, 13.707994) rotate(90.000000) translate(-13.942446, -13.707994) translate(12.302158, 0.000000)">
+                            <g id="c">
+                                <polyline id="e" points="3.11654676 4.23335113 2.8705036 0 0.410071942 0 0.156647482 4.23335113"></polyline>
+                                <g id="e-link" transform="translate(1.640288, 25.299313) scale(-1, 1) rotate(-180.000000) translate(-1.640288, -25.299313) translate(0.000000, 23.182637)">
+                                    <polyline id="e" points="3.11654676 4.23335113 2.8705036 0 0.410071942 0 0.156647482 4.23335113"></polyline>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <g id="a-link" transform="translate(28.500000, 26.500000) rotate(22.500000) translate(-28.500000, -26.500000) translate(8.611511, 6.945950)" fill="#000000" fill-rule="nonzero">
+                <g id="a">
+                    <g id="b" transform="translate(5.946043, 5.846056)">
+                        <g id="c" transform="translate(12.302158, 0.000000)">
+                            <polyline id="e" points="3.11654676 4.23335113 2.8705036 0 0.410071942 0 0.156647482 4.23335113"></polyline>
+                            <g id="e-link" transform="translate(1.640288, 25.299313) scale(-1, 1) rotate(-180.000000) translate(-1.640288, -25.299313) translate(0.000000, 23.182637)">
+                                <polyline id="e" points="3.11654676 4.23335113 2.8705036 0 0.410071942 0 0.156647482 4.23335113"></polyline>
+                            </g>
+                        </g>
+                        <g id="c-link" transform="translate(13.942446, 13.707994) rotate(90.000000) translate(-13.942446, -13.707994) translate(12.302158, 0.000000)">
+                            <g id="c">
+                                <polyline id="e" points="3.11654676 4.23335113 2.8705036 0 0.410071942 0 0.156647482 4.23335113"></polyline>
+                                <g id="e-link" transform="translate(1.640288, 25.299313) scale(-1, 1) rotate(-180.000000) translate(-1.640288, -25.299313) translate(0.000000, 23.182637)">
+                                    <polyline id="e" points="3.11654676 4.23335113 2.8705036 0 0.410071942 0 0.156647482 4.23335113"></polyline>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                    <g id="b-link" transform="translate(19.888489, 19.554050) rotate(45.000000) translate(-19.888489, -19.554050) translate(5.946043, 5.846056)">
+                        <g id="b">
+                            <g id="c" transform="translate(12.302158, 0.000000)">
+                                <polyline id="e" points="3.11654676 4.23335113 2.8705036 0 0.410071942 0 0.156647482 4.23335113"></polyline>
+                                <g id="e-link" transform="translate(1.640288, 25.299313) scale(-1, 1) rotate(-180.000000) translate(-1.640288, -25.299313) translate(0.000000, 23.182637)">
+                                    <polyline id="e" points="3.11654676 4.23335113 2.8705036 0 0.410071942 0 0.156647482 4.23335113"></polyline>
+                                </g>
+                            </g>
+                            <g id="c-link" transform="translate(13.942446, 13.707994) rotate(90.000000) translate(-13.942446, -13.707994) translate(12.302158, 0.000000)">
+                                <g id="c">
+                                    <polyline id="e" points="3.11654676 4.23335113 2.8705036 0 0.410071942 0 0.156647482 4.23335113"></polyline>
+                                    <g id="e-link" transform="translate(1.640288, 25.299313) scale(-1, 1) rotate(-180.000000) translate(-1.640288, -25.299313) translate(0.000000, 23.182637)">
+                                        <polyline id="e" points="3.11654676 4.23335113 2.8705036 0 0.410071942 0 0.156647482 4.23335113"></polyline>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <ellipse id="Oval" fill="#000000" fill-rule="nonzero" cx="28.5" cy="26.5" rx="4.71582734" ry="4.63652743"></ellipse>
+            <g id="Group" transform="translate(0.000000, 8.961831)" stroke="#000000">
+                <path d="M28.5,35.0763379 C14.9676259,35.0763379 4.51079137,24.1905779 0.102517986,17.538169 C4.51079137,10.88576 14.9676259,0 28.5,0 C42.0323741,0 52.4892086,10.88576 56.897482,17.538169 C52.4892086,24.1905779 42.0323741,35.0763379 28.5,35.0763379 Z" id="Shape" stroke-width="2.85236226"></path>
+                <ellipse id="Oval" stroke-width="3.87106307" cx="28.5" cy="17.538169" rx="9.73920863" ry="9.57543707"></ellipse>
+            </g>
+        </g>
+        <text id="+" font-family="HelveticaNeue, Helvetica Neue" font-size="16.8000007" font-weight="normal" fill="#2F2F2F">
+            <tspan x="68.4599998" y="30">+</tspan>
+        </text>
+        <text id="+" font-family="HelveticaNeue, Helvetica Neue" font-size="16.8000007" font-weight="normal" fill="#2F2F2F">
+            <tspan x="166.46" y="30">+</tspan>
+        </text>
+    </g>
+</svg>
