@@ -15,7 +15,7 @@ NOTE: So far, this is more of a proof-of-concept than a respectable piece of sof
 * [ x ] Introduce Babel & webpack
     * [ X ] Write the webpack config
 * [ x ] Put the core business logic into a `lib` directory and leave the `chrome` dir for extension specific stuff
-* [ ] Add Jest & unit tests
+* [ ] Figure out a testing strategy
 
 ### Bugs
 * [ ] What happens when a patch is related to more than one ticket?
