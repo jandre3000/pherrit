@@ -14,7 +14,7 @@ class Renderer {
 
 	appendTemplateToDOM( template, el ) {
 		if ( el ) {
-			el.append( template.body );
+			el.append( ...template.body.childNodes );
 		}
 	}
 }
