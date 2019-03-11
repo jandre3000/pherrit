@@ -48,4 +48,8 @@ function init() {
 	}
 
 }
-document.addEventListener( 'DOMContentLoaded', init, false );
+if ( window.location.hostname === 'localhost' ) {
+	document.addEventListener( 'DOMContentLoaded', init, false );
+} else {
+	init();
+}
