@@ -12,7 +12,7 @@ class GerritQuery {
 	}
 
 	createQueryString( ticketNumbers ) {
-		var combiner = '+OR+',
+		var combiner = '+OR+bug:',
 			ticketsLength = ticketNumbers.length,
 			queryElements = ticketNumbers.map( ( num, i ) => {
 				if ( i === ticketsLength - 1 ) {
