@@ -4,7 +4,7 @@
   "description": "A browser extension that adds Gerrit patches to the Wikimedia Phabricator UI",
   "main": "src/main.js",
   "scripts": {
-    "start": "webpack --watch --mode=development",
+    "start": "concurrently --prefix=none --raw 'node proxy.js' 'open http://localhost:3000/' 'webpack --watch --mode=development'",
     "build": "webpack"
   },
   "repository": {
@@ -24,13 +24,16 @@
   "homepage": "https://github.com/j4n-co/pherrit#readme",
   "devDependencies": {
     "clean-webpack-plugin": "^0.1.19",
+    "concurrently": "^4.1.0",
     "copy-webpack-plugin": "^4.5.4",
     "css-loader": "^1.0.0",
     "eslint": "^5.7.0",
     "eslint-config-wikimedia": "^0.7.2",
     "eslint-plugin-qunit": "^3.3.1",
+    "express": "^4.16.4",
     "jsdoc": "^3.5.5",
     "mini-css-extract-plugin": "^0.4.4",
+    "node-fetch": "^2.3.0",
     "postcss": "^7.0.5",
     "postcss-color-function": "^4.0.1",
     "postcss-custom-properties": "^7.0.0",

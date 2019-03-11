@@ -25,8 +25,10 @@ class GerritQuery {
 	}
 
 	createUrl( query ) {
-		// for developement, using mock data and mock page in tests directory
-		// return 'http://localhost:3030/tests/mock_data/rawGerritResponse.txt';
+		// for development, use proxy
+		if ( window.location.hostname === 'localhost' ) {
+			return `http://localhost:3000/gerrit?pp=0&o=TRACKING_IDS&o=DETAILED_LABELS&q=bug:${query}`;
+		}
 		return `https://gerrit.wikimedia.org/r/changes/?pp=0&o=TRACKING_IDS&o=DETAILED_LABELS&q=bug:${query}`;
 
 	}
@@ -35,7 +37,8 @@ class GerritQuery {
 		return fetch( this.url, {
 			headers: {
 				Accept: 'application/json',
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'Access-Control-Allow-Origin': '*'
 			}
 		} )
 			.then( ( response ) => {
