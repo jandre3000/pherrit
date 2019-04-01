@@ -3,7 +3,7 @@
  */
 class Page {
 	get cards() {
-		return document.querySelectorAll( '[data-sigil=" project-card"]' );
+		return document.querySelectorAll( '[data-sigil~="project-card"]' );
 	}
 
 	get ticketNumbers() {
