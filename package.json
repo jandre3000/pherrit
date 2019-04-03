@@ -25,6 +25,7 @@
   "devDependencies": {
     "clean-webpack-plugin": "^0.1.19",
     "concurrently": "^4.1.0",
+    "cors": "2.8.4",
     "copy-webpack-plugin": "^4.5.4",
     "css-loader": "^1.0.0",
     "eslint": "^5.7.0",
