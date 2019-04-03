@@ -11,13 +11,15 @@
  */
 
 var express = require( 'express' ),
+	cors = require( 'cors' ),
 	querystring = require( 'querystring' ),
 	fetch = require( 'node-fetch' ),
 	app = express();
 
 app.use( express.static( 'build' ) );
+app.use( cors() );
 
-app.use( '/gerrit', function ( req, resp ) {
+app.use( '/gerrit', cors(), function ( req, resp ) {
 	var queryString = querystring.stringify( req.query );
 	return fetch( 'https://gerrit.wikimedia.org/r/changes/?' + queryString )
 		.then( ( response ) => response.text() )

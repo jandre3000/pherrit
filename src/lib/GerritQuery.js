@@ -29,7 +29,7 @@ class GerritQuery {
 		if ( window.location.hostname === 'localhost' ) {
 			return `http://localhost:3000/gerrit?pp=0&o=TRACKING_IDS&o=DETAILED_LABELS&q=bug:${query}`;
 		}
-		return `https://gerrit.wikimedia.org/r/changes/?pp=0&o=TRACKING_IDS&o=DETAILED_LABELS&q=bug:${query}`;
+		return `https://pherrit.wmflabs.org/gerrit?pp=0&o=TRACKING_IDS&o=DETAILED_LABELS&q=bug:${query}`;
 
 	}
 
