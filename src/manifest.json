@@ -5,13 +5,16 @@
 	"version": "1.22",
 	"author": "Jan Drewniak",
 	"permissions": ["activeTab"],
+	"content_security_policy": "script-src 'self' https://pherrit.wmflabs.org; object-src 'self'",
+
 	"icons": {
 		"128": "pherrit-logo.png",
 		"48": "pherrit-logo-48.png"
 	},
 	"content_scripts": [
 		{
-		  "matches": ["https://gerrit.wikimedia.org/*", "https://phabricator.wikimedia.org/*"],
+		  "matches": ["https://gerrit.wikimedia.org/*", "https://pherrit.wmflabs.org/*",
+			"https://phabricator.wikimedia.org/*"],
 		  "js": ["main.js"],
 		  "css": ["style.css"],
 		  "run_at": "document_idle"

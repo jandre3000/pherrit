@@ -12,6 +12,28 @@ function init() {
 		parser = new GerritResponseParser(),
 		renderer = new Renderer();
 
+	// define t-shirt sizing support
+	Array.from( document.querySelectorAll( '.phui-tag-core' ) ).forEach( ( node ) => {
+		switch( node.textContent.trim() ) {
+			case '8':
+				node.textContent = 'XL (8)';
+				break;
+			case '5':
+				node.textContent = 'L (5)';
+				break;
+			case '3':
+				node.textContent = 'M (3)';
+				break;
+			case '2':
+				node.textContent = 'S (2)';
+				break;
+			case '1':
+				node.textContent = 'XS (1)';
+				break;
+			default:
+				break;
+		}
+	} );
 	if ( Object.keys( page.cardMap ).length > -1 ) {
 
 		gerritQuery.fetch()
