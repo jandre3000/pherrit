@@ -2,16 +2,38 @@ import Page from './lib/Page.js';
 import GerritQuery from './lib/GerritQuery.js';
 import GerritResponseParser from './lib/GerritResponseParser.js';
 import Renderer from './lib/Renderer.js';
+import PhabQuery from './lib/PhabQuery';
 import PherritLink from './components/PherritLink';
 import PherritLinkGroup from './components/PherritLinkGroup';
 
+function getOpacityFromTimestamp( epoch, maxAgeDays ) {
+	var daysOld,
+		d = new Date( 0 );
+	d.setUTCSeconds( epoch );
+	daysOld = ( new Date() - d ) / 1000 / 60 / 60 / 24;
+	// if a card is older than a year (360 days), make it 0.2
+
+	return 1 - ( 0.8 * Math.min( 1, daysOld / maxAgeDays ) );
+}
 function init() {
 
 	var page = new Page(),
 		gerritQuery = new GerritQuery( page.ticketNumbers ),
 		parser = new GerritResponseParser(),
+		phab = new PhabQuery(),
 		renderer = new Renderer();
 
+	phab.fetch( page.ticketNumbers ).then( function ( tickets ) {
+		tickets.forEach( function ( { id, dateModified, dateCreated } ) {
+			// set card style
+			var card = page.cardMap[ `T${id}` ];
+			if ( card ) {
+				card.style.setProperty( 'opacity', getOpacityFromTimestamp( dateModified, 360 ) );
+				card.querySelector( '.phui-oi-link' ).style.setProperty( 'opacity',
+					getOpacityFromTimestamp( dateCreated, 360 * 2 ) );
+			}
+		} );
+	} );
 	// define t-shirt sizing support
 	Array.from( document.querySelectorAll( '.phui-tag-core' ) ).forEach( ( node ) => {
 		switch( node.textContent.trim() ) {
